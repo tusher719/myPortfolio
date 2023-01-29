@@ -133,6 +133,7 @@ Route::group(array('middleware' => 'auth'), function() {
     // Profile
     Route::prefix('/profile')->group(function (){
         Route::get('/view', [ProfileController::class, 'ProfileView'])->name('profile');
+        Route::post('/update/password', [ProfileController::class, 'ChangePassword'])->name('change.password');
     });
 
 });
