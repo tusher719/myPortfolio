@@ -17,12 +17,17 @@ class ProfileController extends Controller
     }
 
     // Name Update
-    function nameupdate(Request $request)
+    function ChangeName(Request $request)
     {
         User::find(Auth::id())->update([
             'name' => $request->name,
         ]);
-        return back()->with('nameupdate', 'Your Name Updated Successfully');
+
+        $notification = array(
+            'message' => 'Admin Name Change Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('profile')->with($notification);
     }
 
     // Password Change

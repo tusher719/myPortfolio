@@ -17,7 +17,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">User Profile</li>
             </ol>
           </div>
@@ -35,8 +35,8 @@
             <div class="card card-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header text-white" style="background: url('{{ asset('backend') }}/dist/img/photo1.png') center center;">
-                  <h3 class="widget-user-username text-right">Elizabeth Pierce</h3>
-                  <h5 class="widget-user-desc text-right">Web Designer</h5>
+                  <h3 class="widget-user-username text-right">{{ $user->name }}</h3>
+                  <h5 class="widget-user-desc text-right">Web Developer</h5>
                 </div>
                 <div class="widget-user-image">
                   <img class="img-circle" src="{{ asset('backend') }}/dist/img/user3-128x128.jpg" alt="User Avatar">
@@ -338,6 +338,36 @@
 
                   <div class="tab-pane" id="settings">
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Name Change</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <span class="date">{{ Carbon\Carbon::parse($user->updated_at)->format('l, d-M-Y')  }}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form action="{{ route('change.name') }}" method="POST">
+                                    @csrf
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Name" value="{{ $user->name }}">
+                                            @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                  </div>
+                                  <!-- /.card-body -->
+                                  <div class="card-footer text-right">
+                                      <button type="submit" class="btn btn-primary">Change Name</button>
+                                  </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="card card-purple">
                                 <div class="card-header">
