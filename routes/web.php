@@ -130,6 +130,11 @@ Route::group(array('middleware' => 'auth'), function() {
         Route::get('/view/{id}', [ContactController::class, 'ContactView'])->name('contact.view');
     });
 
+    // Profile
+    Route::prefix('/profile')->group(function (){
+        Route::get('/view', [ProfileController::class, 'ProfileView'])->name('profile');
+    });
+
 });
 
 
