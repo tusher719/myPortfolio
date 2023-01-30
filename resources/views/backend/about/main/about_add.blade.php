@@ -196,7 +196,7 @@ About main
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group text-center">
-                                                    <img id="showImage" class="rounded" src="{{ (!empty($editData->profile_photo_path)) ? asset($editData->profile_photo_path) : url('uploads/no_image.jpg') }}" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                                    <img id="showImage" class="rounded" src="{{ (!empty($editData->profile_photo_path)) ? asset($editData->profile_photo_path) : url('uploads/no_image.jpg') }}" alt="" style="object-fit: cover;">
                                                 </div>
                                             </div>
                                         </div>

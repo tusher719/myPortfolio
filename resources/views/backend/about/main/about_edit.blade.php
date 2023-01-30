@@ -81,7 +81,7 @@
                                             <div class="form-group text-center">
                                                 <label>New Image (Preview)</label>
                                                 <div>
-                                                    <img id="showImage" class="rounded" src="{{ url('uploads/no_image.jpg') }}" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                                    <img id="showImage" class="rounded" src="{{ url('uploads/no_image.jpg') }}" alt="" style="object-fit: cover;">
                                                 </div>
                                             </div>
                                         </div>

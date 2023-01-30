@@ -32,7 +32,7 @@ class AboutController extends Controller
 
         $image = $request->file('about_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(300,300)->save('uploads/about/'.$name_gen);
+        Image::make($image)->save('uploads/about/'.$name_gen);
         $save_url = 'uploads/about/'.$name_gen;
 
 
@@ -65,7 +65,7 @@ class AboutController extends Controller
             unlink($old_image);
             $image = $request->file('about_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(300,300)->save('uploads/about/'.$name_gen);
+            Image::make($image)->save('uploads/about/'.$name_gen);
             $save_url = 'uploads/about/'.$name_gen;
 
             About::findOrFail($about_id)->update([
