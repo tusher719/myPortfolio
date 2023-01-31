@@ -39,7 +39,7 @@
                   <h5 class="widget-user-desc text-right">Web Developer</h5>
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle" src="{{ asset('backend') }}/dist/img/user3-128x128.jpg" alt="User Avatar">
+                  <img class="img-circle" src="{{ !empty($user->profile_photo) ? url('uploads/admin_images/'.$user->profile_photo) : url('uploads/no_image.jpg') }}" alt="User Avatar">
                 </div>
                 <div class="card-footer">
                   <div class="row">
@@ -341,7 +341,7 @@
                         <div class="col-md-6">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Name Change</h3>
+                                    <h3 class="card-title">Avater Change</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                             <span class="date">{{ Carbon\Carbon::parse($user->updated_at)->format('l, d-M-Y')  }}</span>
@@ -350,8 +350,10 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form action="{{ route('change.name') }}" method="POST">
+                                <form action="{{ route('change.avatar') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" name="id" value="{{ $user->id }}">
+                                    <input type="hidden" name="old_image" value="{{ $user->profile_photo }}">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Name</label>
@@ -360,11 +362,30 @@
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                  </div>
-                                  <!-- /.card-body -->
-                                  <div class="card-footer text-right">
-                                      <button type="submit" class="btn btn-primary">Change Name</button>
-                                  </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
+                                            @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input type="file" name="profile_photo_path" class="form-control" id="photo">
+                                            @error('profile_photo_path')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group right">
+                                                <img id="showImage" class="rounded img-fluid" src="{{ !empty($user->profile_photo) ? url('uploads/admin_images/'.$user->profile_photo) : url('uploads/no_image.jpg') }}" alt="" style="object-fit: cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer text-right">
+                                        <button type="submit" class="btn btn-primary">Change Name</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
