@@ -18,19 +18,6 @@ class ProfileController extends Controller
         return view('backend.profile.profile', compact('user'));
     }
 
-    // Name Update
-//    function ChangeName(Request $request)
-//    {
-//        User::find(Auth::id())->update([
-//            'name' => $request->name,
-//        ]);
-//
-//        $notification = array(
-//            'message' => 'Admin Name Change Successfully',
-//            'alert-type' => 'success'
-//        );
-//        return redirect()->route('profile')->with($notification);
-//    }
 
     // Password Change
     public function ChangePassword(Request $request){
@@ -61,23 +48,6 @@ class ProfileController extends Controller
 
     } // End Method
 
-//    public function ChangeAvatar(Request $request){
-//
-//        $image = $request->file('admin_avatar');
-//        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-//        Image::make($image)->save('uploads/avatar/'.$name_gen);
-//        $save_url = 'uploads/avatar/'.$name_gen;
-//
-//        User::insert([
-//            'profile_photo_path' => $save_url,
-//        ]);
-//        $notification = array(
-//            'message' => 'About Insert Successfully',
-//            'alert-type' => 'info'
-//        );
-//
-//        return redirect()->back()->with($notification);
-//    }
 
     // Profile Update
     public function ChangeAvatar(Request $request){
@@ -88,9 +58,9 @@ class ProfileController extends Controller
 
         if ($request->file('profile_photo_path')){
             $file = $request->file('profile_photo_path');
-            @unlink(public_path('uploads/admin_images/'.$data->profile_photo));
+            @unlink('uploads/admin_images/'.$data->profile_photo);
             $filename = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('uploads/admin_images'),$filename);
+            $file->move('uploads/admin_images',$filename);
             $data['profile_photo'] = $filename;
         }
         $data->save();

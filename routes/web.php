@@ -134,8 +134,12 @@ Route::group(array('middleware' => 'auth'), function() {
     Route::prefix('/profile')->group(function (){
         Route::get('/view', [ProfileController::class, 'ProfileView'])->name('profile');
         Route::post('/update/password', [ProfileController::class, 'ChangePassword'])->name('change.password');
-//        Route::post('/update/name', [ProfileController::class, 'ChangeName'])->name('change.name');
         Route::post('/update/avatar', [ProfileController::class, 'ChangeAvatar'])->name('change.avatar');
+    });
+
+    // Daily Budget
+    Route::prefix('/daily-budget')->group(function (){
+        Route::get('/view', [ProfileController::class, 'BudgetView'])->name('budget.page');
     });
 
 });

@@ -1,3 +1,6 @@
+@php
+    $users = \App\Models\User::find(Auth::id());
+@endphp
 <nav class="main-header navbar navbar-expand navbar-white navbar-light text-sm">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -124,7 +127,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <div class="image">
-                    <img src="http://127.0.0.1:8000/backend/dist/img/user2-160x160.jpg" style="height: 25px; width: 25px;" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ !empty($users->profile_photo) ? url('uploads/admin_images/'.$users->profile_photo) : url('uploads/no_image.jpg') }}" style="height: 25px; width: 25px;" class="img-circle elevation-2" alt="User Image">
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
