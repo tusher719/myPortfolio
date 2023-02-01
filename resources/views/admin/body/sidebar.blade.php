@@ -198,6 +198,27 @@
                     </ul>
                 </li>
 
+
+                <li class="nav-item {{ ($prefix ==  '/daily-budget') ? 'menu-is-opening menu-open':'' }} ">
+                    <a href="#" class="nav-link {{ ($prefix ==  '/daily-budget') ? 'active':'' }}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Daily Budget
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">1</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('category.budget.page') }}" class="nav-link {{ ($route ==  'category.budget.page') ? 'active':'' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Category</p>
+                                <span class="badge badge-warning right">{{ count($tag) }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('contact.manage') }}" class="nav-link {{ ($route ==  'contact.manage') ? 'active':'' }}">
                         <i class="nav-icon fas fa-phone"></i>

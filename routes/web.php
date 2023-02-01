@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\CommentController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\DailyBudgetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,7 +140,8 @@ Route::group(array('middleware' => 'auth'), function() {
 
     // Daily Budget
     Route::prefix('/daily-budget')->group(function (){
-        Route::get('/view', [ProfileController::class, 'BudgetView'])->name('budget.page');
+        Route::get('/view', [DailyBudgetController::class, 'BudgetView'])->name('category.budget.page');
+        Route::post('/category/store', [DailyBudgetController::class, 'CategoryStore'])->name('category.budget.store');
     });
 
 });
