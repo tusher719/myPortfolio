@@ -86,8 +86,6 @@ class ProfileController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
 
-
-
         if ($request->file('profile_photo_path')){
             $file = $request->file('profile_photo_path');
             @unlink(public_path('uploads/admin_images/'.$data->profile_photo));
@@ -101,10 +99,6 @@ class ProfileController extends Controller
             'message' => 'Admin Profile Updated Successfully',
             'alert-type' => 'success'
         );
-
-
-
-
 
         return redirect()->route('profile')->with($notification);
     } // End method
