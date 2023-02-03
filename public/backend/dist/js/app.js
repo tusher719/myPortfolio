@@ -216,3 +216,31 @@ $(function () {
     });
 });
 
+// Budget Category Delete
+$(function () {
+    $(document).on('click', '#cat', function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "if you delete this, it will be gone forever!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                    'Deleting!',
+                    'Processing Delete.',
+                    'success'
+                )
+            }
+        })
+
+    });
+});
+

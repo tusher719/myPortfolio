@@ -14,6 +14,7 @@
     $postPost = \App\Models\BlogPost::latest()->get();
     $message = \App\Models\Contact::latest()->get();
     $users = \App\Models\User::find(Auth::id());
+    $budgetCategory = \App\Models\DailyBudgetCategory::latest()->get();
 @endphp
 
 <!-- Main Sidebar Container -->
@@ -213,7 +214,7 @@
                             <a href="{{ route('category.budget.page') }}" class="nav-link {{ ($route ==  'category.budget.page') ? 'active':'' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Category</p>
-                                <span class="badge badge-warning right">{{ count($tag) }}</span>
+                                <span class="badge badge-warning right">{{ count($budgetCategory) }}</span>
                             </a>
                         </li>
                     </ul>

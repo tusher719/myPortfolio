@@ -36,8 +36,7 @@
 
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Category Manage <span class="badge badge-danger"></span></h3>
-{{--                                <h3 class="card-title">Category Manage <span class="badge badge-danger">{{ count($category) }}</span></h3>--}}
+                                <h3 class="card-title">Category Manage <span class="badge badge-danger">{{ count($category) }}</span></h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm">
@@ -87,7 +86,6 @@
                                             </th>
                                             <th>SL</th>
                                             <th>Category Name</th>
-                                            <th>Category Slug</th>
                                             <th>Created at</th>
                                             <th class="text-right">Action</td>
                                         </tr>
@@ -103,7 +101,6 @@
                                                 </td>
                                                 <td>{{ $loop->index+1 }}</td>
                                                 <td>{{ $item->category_name }}</td>
-                                                <td>{{ $item->category_name_slug }}</td>
                                                 <td>{{ $item->created_at->diffForHumans() }}</td>
                                                 <td class="text-right">
                                                     <a href="{{ route('category.edit', $item->id) }}" class="btn btn-info btn-sm">

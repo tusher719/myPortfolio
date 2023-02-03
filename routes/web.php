@@ -142,6 +142,9 @@ Route::group(array('middleware' => 'auth'), function() {
     Route::prefix('/daily-budget')->group(function (){
         Route::get('/view', [DailyBudgetController::class, 'BudgetView'])->name('category.budget.page');
         Route::post('/category/store', [DailyBudgetController::class, 'CategoryStore'])->name('category.budget.store');
+        Route::get('/category/edit/{id}', [DailyBudgetController::class, 'CategoryEdit'])->name('category.edit');
+        Route::post('/category/update', [DailyBudgetController::class, 'CategoryUpdate'])->name('category.update');
+        Route::get('/category/delete/{id}', [DailyBudgetController::class, 'CategoryDelete'])->name('category.delete');
     });
 
 });
