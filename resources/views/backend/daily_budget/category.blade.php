@@ -59,7 +59,7 @@
                                         <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
                                         </button>
                                         <div class="btn-group">
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
                                             <button type="button" class="btn btn-default btn-sm">
