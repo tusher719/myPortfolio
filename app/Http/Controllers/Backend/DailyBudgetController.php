@@ -74,5 +74,18 @@ class DailyBudgetController extends Controller
         return redirect()->back()->with($notification);
     } // End Method
 
+    // Mark Delete Function
+    public function MarkDelete(Request $request){
+        foreach ($request->mark as $mark_id){
+            DailyBudgetCategory::findOrFail($mark_id)->delete();
+        }
+
+        $notification = array(
+            'message' => 'Multiple Category Deleted Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->back()->with($notification);
+    }
+
 
 }

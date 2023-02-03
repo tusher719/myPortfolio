@@ -52,75 +52,78 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                <div class="mailbox-controls">
-                                    <!-- Check all button -->
-                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm">
-                                            <i class="far fa-trash-alt"></i>
+                                <form action="{{ route('mark.delete') }}" method="post">
+                                    @csrf
+                                    <div class="mailbox-controls">
+                                        <!-- Check all button -->
+                                        <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
                                         </button>
-                                        <button type="button" class="btn btn-default btn-sm">
-                                            <i class="fas fa-reply"></i>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-sm">
+                                                <i class="fas fa-reply"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-sm">
+                                                <i class="fas fa-share"></i>
+                                            </button>
+                                        </div>
+                                        <!-- /.btn-group -->
+                                        <button type="button" class="btn btn-default btn-sm" onClick="window.location.reload()">
+                                            <i class="fas fa-sync-alt"></i>
                                         </button>
-                                        <button type="button" class="btn btn-default btn-sm">
-                                            <i class="fas fa-share"></i>
-                                        </button>
+
+
+
                                     </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" class="btn btn-default btn-sm" onClick="window.location.reload()">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </button>
 
-
-
-                                </div>
-
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped table-border">
-                                        <tbody>
-
-                                        <tr>
-                                            <th>
-                                                #
-                                            </th>
-                                            <th>SL</th>
-                                            <th>Category Name</th>
-                                            <th>Created at</th>
-                                            <th class="text-right">Action</td>
-                                        </tr>
-
-                                        @foreach($category as $item)
+                                    <div class="table-responsive mailbox-messages">
+                                        <table class="table table-hover table-striped table-border">
+                                            <tbody>
 
                                             <tr>
-                                                <td>
-                                                    <div class="icheck-primary">
-                                                        <input type="checkbox" value="" id="{{ $item->id }}">
-                                                        <label for="{{ $item->id }}"></label>
-                                                    </div>
-                                                </td>
-                                                <td>{{ $loop->index+1 }}</td>
-                                                <td>{{ $item->category_name }}</td>
-                                                <td>{{ $item->created_at->diffForHumans() }}</td>
-                                                <td class="text-right">
-                                                    <a href="{{ route('category.edit', $item->id) }}" class="btn btn-info btn-sm">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i> Edit
-                                                    </a>
-                                                    <a href="{{ route('category.delete', $item->id) }}" id="cat" class="btn btn-danger btn-sm">
-                                                        <i class="fas fa-trash">
-                                                        </i> Delete
-                                                    </a>
-                                                </td>
+                                                <th>
+                                                    #
+                                                </th>
+                                                <th>SL</th>
+                                                <th>Category Name</th>
+                                                <th>Created at</th>
+                                                <th class="text-right">Action</td>
                                             </tr>
-                                        @endforeach
+
+                                            @foreach($category as $item)
+
+                                                <tr>
+                                                    <td>
+                                                        <div class="icheck-primary">
+                                                            <input type="checkbox" name="mark[]" value="{{ $item->id }}">
+                                                            <label for="{{ $item->id }}"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ $loop->index+1 }}</td>
+                                                    <td>{{ $item->category_name }}</td>
+                                                    <td>{{ $item->created_at->diffForHumans() }}</td>
+                                                    <td class="text-right">
+                                                        <a href="{{ route('category.edit', $item->id) }}" class="btn btn-info btn-sm">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i> Edit
+                                                        </a>
+                                                        <a href="{{ route('category.delete', $item->id) }}" id="cat" class="btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash">
+                                                            </i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
 
-                                        </tbody>
-                                    </table>
-                                    <!-- /.table -->
-                                </div>
-                                <!-- /.mail-box-messages -->
+                                            </tbody>
+                                        </table>
+                                        <!-- /.table -->
+                                    </div>
+                                    <!-- /.mail-box-messages -->
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>

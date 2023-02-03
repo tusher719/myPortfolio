@@ -145,6 +145,7 @@ Route::group(array('middleware' => 'auth'), function() {
         Route::get('/category/edit/{id}', [DailyBudgetController::class, 'CategoryEdit'])->name('category.edit');
         Route::post('/category/update', [DailyBudgetController::class, 'CategoryUpdate'])->name('category.update');
         Route::get('/category/delete/{id}', [DailyBudgetController::class, 'CategoryDelete'])->name('category.delete');
+        Route::post('/category/mark/delete', [DailyBudgetController::class, 'MarkDelete'])->name('mark.delete');
     });
 
 });
