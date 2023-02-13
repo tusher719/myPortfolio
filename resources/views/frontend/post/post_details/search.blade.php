@@ -59,13 +59,13 @@
                                 <div class="feature-img">
                                     <img class="img-fluid" src="{{ asset($item->post_image) }}" alt="" />
                                 </div>
-                                <a class="posts-title" href="{{ url('blog/'.$item->id.'/'.$item->post_title_slug ) }}">
+                                <a class="posts-title" href="{{ url('blog/'.$item->id ) }}">
                                     <h3>{{ $item->post_title }}</h3>
                                 </a>
                                 <p class="excert">
                                     {!! Str::limit($item->post_details, 250 )  !!}
                                 </p>
-                                <a href="{{ url('blog/'.$item->id.'/'.$item->post_title_slug ) }}" class="primary-btn">View More</a>
+                                <a href="{{ url('blog/'.$item->id ) }}" class="primary-btn">View More</a>
                             </div>
                         </div>
                     @endforeach
@@ -113,7 +113,7 @@
                                             <img class="img-fluid" src="{{ asset($item->post_image) }}" style="max-width: 100px;" alt="" />
                                         </div>
                                         <div class="details">
-                                            <a href="{{ url('blog/'.$item->id.'/'.$item->post_title_slug ) }}">
+                                            <a href="{{ url('blog/'.$item->id) }}">
                                                 <h6>{{ Str::limit($item->post_title, 25 ) }}</h6>
                                             </a>
                                             <p>{{ $item->created_at->diffForHumans() }}</p>

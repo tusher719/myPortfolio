@@ -159,7 +159,7 @@ Route::post('/message', [IndexController::class, 'Message'])->name('message');
 // blog page
 Route::get('/post/list', [IndexController::class, 'PostList'])->name('post.list');
 // Single Blog Page
-Route::get('/blog/{id}/{slug}', [IndexController::class, 'SinglePost'])->name('single.post');
+Route::get('/blog/{id}', [IndexController::class, 'SinglePost'])->name('single.post');
 
 // Category wise data
 Route::get('/category/blog/{cat_id}/{slug}', [IndexController::class, 'CatWiseProduct'])->name('category.post');

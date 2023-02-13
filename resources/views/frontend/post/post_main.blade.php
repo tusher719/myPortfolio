@@ -32,7 +32,7 @@
                     <a href="#">
                         <h4>{{ $item->post_title }}</h4>
                     </a>
-                    <a class="overlay" target="_blank" href="{{ url('blog/'.$item->id.'/'.$item->post_title_slug ) }}"></a>
+                    <a class="overlay" target="_blank" href="{{ url('blog/'.$item->id ) }}"></a>
                     <p>
                         {!! Str::limit($item->post_details, 250 )  !!}
                     </p>

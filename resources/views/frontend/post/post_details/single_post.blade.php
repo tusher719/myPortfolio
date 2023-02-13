@@ -66,35 +66,37 @@
                     </div>
                     <div class="navigation-area">
                         <div class="row">
-                            <div
-                                class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                <div class="thumb">
-                                    <a href="#prev"><img class="img-fluid" src="{{ asset('frontend') }}/images/blog/prev.jpg" alt="" /></a>
-                                </div>
-                                <div class="arrow">
-                                    <a href="#prev"><span class="lnr text-white lnr-arrow-left"></span></a>
-                                </div>
-                                <div class="detials">
-                                    <p>Prev Post</p>
-                                    <a href="#prev">
-                                        <h4>Space The Final Frontier</h4>
-                                    </a>
-                                </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                @if($prev)
+                                    <div class="thumb">
+                                        <a href="{{ route('single.post',$prev->id) }}"><img class="img-fluid" src="{{ asset($prev->post_image) }}" alt="" /></a>
+                                    </div>
+                                    <div class="arrow">
+                                        <a href="{{ route('single.post',$prev->id) }}"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                    </div>
+                                    <div class="detials">
+                                        <p>Prev Post</p>
+                                        <a href="{{ route('single.post',$prev->id) }}">
+                                            <h5>{{ $prev->post_title }}</h5>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
-                            <div
-                                class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                <div class="detials">
-                                    <p>Next Post</p>
-                                    <a href="#next">
-                                        <h4>Telescopes 101</h4>
-                                    </a>
-                                </div>
-                                <div class="arrow">
-                                    <a href="#next"><span class="lnr text-white lnr-arrow-right"></span></a>
-                                </div>
-                                <div class="thumb">
-                                    <a href="#next"><img class="img-fluid" src="{{ asset('frontend') }}/images/blog/next.jpg" alt="" /></a>
-                                </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                @if($next)
+                                    <div class="detials">
+                                        <p>Next Post</p>
+                                        <a href="{{ route('single.post',$next->id) }}">
+                                            <h5>{{ $next->post_title }}</h5>
+                                        </a>
+                                    </div>
+                                    <div class="arrow">
+                                        <a href="{{ route('single.post',$next->id) }}"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                    </div>
+                                    <div class="thumb">
+                                        <a href="{{ route('single.post',$next->id) }}"><img class="img-fluid" src="{{ asset($next->post_image) }}" alt="" /></a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -106,7 +108,7 @@
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="{{ asset('frontend') }}/images/blog/c1.jpg" alt="" />
+                                            <img src="{{ asset('frontend') }}/images/blog/avater.jpg" height="50px" width="50px" alt="" />
                                         </div>
                                         <div class="desc">
                                             <h5><a href="#">{{ $item->name }}</a></h5>
@@ -170,7 +172,7 @@
                                         <img class="img-fluid" src="{{ asset($item->post_image) }}" style="max-width: 100px;" alt="" />
                                     </div>
                                     <div class="details">
-                                        <a href="{{ url('blog/'.$item->id.'/'.$item->post_title_slug ) }}">
+                                        <a href="{{ url('blog/'.$item->id ) }}">
                                             <h6>{{ Str::limit($item->post_title, 25 ) }}</h6>
                                         </a>
                                         <p>{{ $item->created_at->diffForHumans() }}</p>

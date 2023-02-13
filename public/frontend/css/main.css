@@ -3689,6 +3689,8 @@ Portfolio Section End
         color: var(--text-heading-1);
       }
       .single-post-area .navigation-area .nav-left .thumb img {
+          height: 50px;
+          object-fit: cover;
         -webkit-transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
@@ -3714,6 +3716,8 @@ Portfolio Section End
       margin-left: 20px;
       background: #000; }
       .single-post-area .navigation-area .nav-right .thumb img {
+          height: 50px;
+          object-fit: cover;
         -webkit-transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;

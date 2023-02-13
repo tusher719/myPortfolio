@@ -90,27 +90,31 @@ class IndexController extends Controller
         $category = BlogCategory::orderBy('blog_category_name')->get();
         $recentPost = BlogPost::latest()->limit(5)->get();
         $popular = BlogPost::orderBy('views','desc')->limit(6)->get();
-        $comment = Comment::where('blog_id',$post)->latest()->get();
         return view('frontend.post.post_details.post_list',[
             'post' => $post,
             'category' => $category,
             'recentPost' => $recentPost,
             'popular' => $popular,
-            'comment' => $comment,
         ]);
     }
 
     // Single Post
-    public function SinglePost($id,$slug) {
+    public function SinglePost($id) {
         // Update Post Views Count
         BlogPost::find($id)->increment('views');
         $post = BlogPost::findOrFail($id);
+
+        $prev = BlogPost::where('id','<',$post->id)->orderBy('id','desc')->first();
+        $next = BlogPost::where('id','>',$post->id)->orderBy('id')->first();
+
         $category = BlogCategory::orderBy('blog_category_name')->get();
         $recentPost = BlogPost::latest()->limit(10)->get();
         $popular = BlogPost::orderBy('views','desc')->limit(6)->get();
         $comment = Comment::where('blog_id',$post->id)->latest()->get();
         return view('frontend.post.post_details.single_post',[
             'post' => $post,
+            'prev' => $prev,
+            'next' => $next,
             'category' => $category,
             'recentPost' => $recentPost,
             'popular' => $popular,
