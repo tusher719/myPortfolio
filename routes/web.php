@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\CommentController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\DailyBudgetController;
+use App\Http\Controllers\Backend\TodosContorller;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +147,12 @@ Route::group(array('middleware' => 'auth'), function() {
         Route::post('/category/update', [DailyBudgetController::class, 'CategoryUpdate'])->name('category.update');
         Route::get('/category/delete/{id}', [DailyBudgetController::class, 'CategoryDelete'])->name('category.delete');
         Route::post('/category/mark/delete', [DailyBudgetController::class, 'MarkDelete'])->name('mark.delete');
+    });
+
+    // Todos
+    Route::prefix('/todos')->group(function (){
+        Route::get('/view', [TodosContorller::class, 'TodosView'])->name('todos.view');
+        Route::post('/store', [TodosContorller::class, 'TodosStore'])->name('todos.store');
     });
 
 });

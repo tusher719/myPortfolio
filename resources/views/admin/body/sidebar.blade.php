@@ -15,6 +15,7 @@
     $message = \App\Models\Contact::latest()->get();
     $users = \App\Models\User::find(Auth::id());
     $budgetCategory = \App\Models\DailyBudgetCategory::latest()->get();
+    $budgetTodos = \App\Models\Todos::latest()->get();
 @endphp
 
 <!-- Main Sidebar Container -->
@@ -215,6 +216,26 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Category</p>
                                 <span class="badge badge-warning right">{{ count($budgetCategory) }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item {{ ($prefix ==  '/todos') ? 'menu-is-opening menu-open':'' }} ">
+                    <a href="#" class="nav-link {{ ($prefix ==  '/todos') ? 'active':'' }}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Todos
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">1</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('todos.view') }}" class="nav-link {{ ($route ==  'todos.view') ? 'active':'' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Todos View</p>
+                                <span class="badge badge-warning right">{{ count($budgetTodos) }}</span>
                             </a>
                         </li>
                     </ul>

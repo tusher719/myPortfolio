@@ -1,3 +1,30 @@
+// Ajax Todos
+$(document).ready(function (){
+    $(document).on('click','.add_todos',function (e){
+        e.preventDefault();
+        let name = $('#name').val();
+        let desc = $('#desc').val();
+        let amount = $('#amount').val();
+        // console.log(name+desc+amount);
+
+        $.ajax({
+            url: "/todos/store",
+            method: 'POST',
+            data: {name:name,desc:desc,amount:amount},
+            success: function (res){
+                if (res.status=='success'){
+                    $('#addTodosForm')[0].reset();
+                }
+            }, error:function(err){
+                let error = err.responseJSON;
+                $.each(error.errors,function(index,value){
+                    $('.errMsgContainer').append('<span class="text-danger">'+value+'</span>'+'<br>');
+                });
+            }
+        });
+    })
+});
+
 // Image Preview
 $(document).ready(function () {
     $('#photo').change(function (e) {

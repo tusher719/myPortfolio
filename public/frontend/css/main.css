@@ -214,9 +214,11 @@ body.hidden-scrolling{
 }
 
 ol, ul {
-  margin: 0;
-  padding: 0;
-  list-style: none; }
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--text-alpha-1);
+}
 li{
     color: var(--text-alpha-2);}
 select {
