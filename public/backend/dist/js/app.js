@@ -14,6 +14,7 @@ $(document).ready(function (){
             success: function (res){
                 if (res.status=='success'){
                     $('#addTodosForm')[0].reset();
+                    $('.table').load(location.href+' .table');
                 }
             }, error:function(err){
                 let error = err.responseJSON;

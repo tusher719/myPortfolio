@@ -81,9 +81,7 @@
                                         <tbody>
 
                                         <tr>
-                                            <th>
-                                                #
-                                            </th>
+                                            <th>#</th>
                                             <th>SL</th>
                                             <th>Skill Name</th>
                                             <th>Description</th>
