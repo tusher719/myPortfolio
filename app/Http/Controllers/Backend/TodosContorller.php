@@ -10,7 +10,7 @@ class TodosContorller extends Controller
 {
     // views
     public function TodosView(){
-        $todos = Todos::orderBy('amount')->get();
+        $todos = Todos::orderBy('name')->get();
         return view('backend.todos.todos',compact('todos'));
     }
 
@@ -29,6 +29,13 @@ class TodosContorller extends Controller
         $todos->desc = $request->desc;
         $todos->amount = $request->amount;
         $todos->save();
+        return response()->json([
+            'status'=>'success',
+        ]);
+    }
+
+    public function TodosDelete(Request $request){
+        Todos::find($request->product_id)->delete();
         return response()->json([
             'status'=>'success',
         ]);

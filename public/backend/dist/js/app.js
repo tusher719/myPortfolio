@@ -24,6 +24,36 @@ $(document).ready(function (){
             }
         });
     })
+    // show product value in update form
+    // $(document).on('click','.update_todo_form',function (){
+    //     let id = $(this).data('id');
+    //     let name = $(this).data('name');
+    //     let desc = $(this).data('desc');
+    //     let price = $(this).data('price');
+    //
+    //     $('#up_id').val(id);
+    //     $('#up_name').val(name);
+    //     $('#up_desc').val(desc);
+    //     $('#up_price').val(price);
+    // });
+
+    $(document).on('click','.delete_product',function (e){
+        e.preventDefault();
+        let product_id = $(this).data('id');
+
+        if (confirm('Are you sure to delete product??')){
+            $.ajax({
+                url: "{{ route('todos.delete') }}",
+                method: 'post',
+                data: {product_id:product_id},
+                success:function (res){
+                    if (res.status=='success'){
+                        $('.table').load(location.href+' .table');
+                    }
+                }
+            });
+        }
+    });
 });
 
 // Image Preview

@@ -153,6 +153,7 @@ Route::group(array('middleware' => 'auth'), function() {
     Route::prefix('/todos')->group(function (){
         Route::get('/view', [TodosContorller::class, 'TodosView'])->name('todos.view');
         Route::post('/store', [TodosContorller::class, 'TodosStore'])->name('todos.store');
+        Route::post('/delete', [TodosContorller::class, 'TodosDelete'])->name('todos.delete');
     });
 
 });

@@ -36,7 +36,7 @@
 
                         <div class="card card-success card-outline">
                             <div class="card-header">
-{{--                                <h3 class="card-title">Tags Manage <span class="badge badge-danger">{{ count($tags) }}</span></h3>--}}
+                                {{--                                <h3 class="card-title">Tags Manage <span class="badge badge-danger">{{ count($tags) }}</span></h3>--}}
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm">
@@ -110,16 +110,11 @@
                                                 <td class="mailbox-name">{{ number_format($item->amount) }}</td>
                                                 <td>{{ $item->created_at->diffForHumans() }}</td>
                                                 <td class="text-right">
-                                                    <a href="" class="btn btn-info btn-sm update_todo_form"
-                                                       data-id="{{ $item->id }}"
-                                                       data-name=" {{ $item->name }}"
-                                                       data-desc="{{ $item->desc }}"
-                                                       data-price="{{ $item->amount }}">
+                                                    <a href="{{ route('tag.edit', $item->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fas fa-pencil-alt">
                                                         </i> Edit
                                                     </a>
-                                                    <a href="" class="btn btn-danger btn-sm delete_product"
-                                                       data-id="{{ $item->id }}">
+                                                    <a href="{{ route('tag.delete', $item->id) }}" id="tag" class="btn btn-danger btn-sm">
                                                         <i class="fas fa-trash">
                                                         </i> Delete
                                                     </a>
@@ -141,7 +136,7 @@
                     <div class="col-lg-4 col-md-4">
                         <div class="card card-warning card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Todos Add</h3>
+                                <h3 class="card-title">Todos Update</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="widgets.html" data-source-selector="#card-refresh-content" data-load-on-init="false">
                                         <i class="fas fa-sync-alt"></i>
@@ -159,28 +154,29 @@
                             </div>
                             <div class="card-body">
 
-                                <form action="" method="POST" id="addTodosForm">
+                                <form action="" method="POST" id="updateTodosForm">
                                     @csrf
+                                    <input type="text" id="up_id">
                                     <div class="errMsgContainer">
                                     </div>
                                     <div class="form-group">
                                         <label>Tag Name</label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter tag name">
+                                        <input type="text" name="up_name" id="up_name" class="form-control" placeholder="Enter tag name">
 
                                     </div>
 
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <input type="text" name="desc" id="desc" class="form-control" placeholder="Enter Description">
+                                        <input type="text" name="up_desc" id="up_desc" class="form-control" placeholder="Enter Description">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Amount</label>
-                                        <input type="text" name="amount" id="amount" class="form-control" placeholder="Enter Amount">
+                                        <input type="text" name="up_amount" id="up_amount" class="form-control" placeholder="Enter Amount">
                                     </div>
 
                                     <div class="form-group text-center">
-                                        <input type="submit" class="btn bg-primary add_todos" value="Add New">
+                                        <input type="submit" class="btn bg-primary update_todos" value="Update New">
                                     </div>
                                 </form>
 
